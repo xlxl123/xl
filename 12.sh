@@ -28,12 +28,12 @@ conn l2tp
         rightprotoport=17/%any # 任意port udp流量
         type=transport # ipsec transport mode 
         auto=add">>/etc/strongswan/ipsec.conf
-echo ': PSK "fuck_great_firewall"'>>/etc/strongswan/ipsec.secrets
+echo ': PSK "123456xx"'>>/etc/strongswan/ipsec.secrets
 sed 's/\[global\].*$/&\nlisten-addr ='$ip_addr'/g' /etc/xl2tpd/xl2tpd.conf
 sed -i 's/^mtu.*/mtu 1200/g' /etc/ppp/options.xl2tpd
 sed -i 's/^mru.*/mru 1200/g' /etc/ppp/options.xl2tpd
 echo 'login'>>/etc/ppp/options.xl2tpd
-echo 'test * test123 *'>>/etc/ppp/chap-secrets
+echo 'gu * gu *'>>/etc/ppp/chap-secrets
 service strongswan start
 service xl2tpd start
 chkconfig strongswan on
