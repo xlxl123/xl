@@ -33,7 +33,7 @@ sed 's/\[global\].*$/&\nlisten-addr ='$ip_addr'/g' /etc/xl2tpd/xl2tpd.conf
 sed -i 's/^mtu.*/mtu 1200/g' /etc/ppp/options.xl2tpd
 sed -i 's/^mru.*/mru 1200/g' /etc/ppp/options.xl2tpd
 echo 'login'>>/etc/ppp/options.xl2tpd
-echo 'gu * gu *'>>/etc/ppp/chap-secrets
+echo 'gu l2tpd gu *'>>/etc/ppp/chap-secrets
 service strongswan start
 service xl2tpd start
 chkconfig strongswan on
